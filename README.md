@@ -35,8 +35,8 @@ Things you may want to cover:
 | first_name_kana       | string | null: false               |
 | birth_date            | date   | null: false               |
 
-- has_many :item
-- has_many :order
+- has_many :items
+- has_many :orders
 
 ### itemsテーブル
 | Column                      | Type       | Options           |
@@ -48,33 +48,33 @@ Things you may want to cover:
 | item_shipping_fee_status_id | integer    | null: false       |
 | item_prefecture_id          | integer    | null: false       |
 | item_scheduled_delivery_id  | integer    | null: false       |
-| item_price                  | string     | null: false       |
-| user                        | references | foreign-key: true |
+| item_price                  | integer    | null: false       |
+| user                        | references | foreign_key: true |
 
 - belongs_to :user
-- belongs_to :order
+- has_many :orders
 
 ### ordersテーブル
-| Column | Type       | Options           |
-| -------| -----------| ----------------- |
-| user   | references | foreign-key: true |
-| item   | references | foreign-key: true |
+| Column | Type       | Options                        |
+| -------| -----------| ------------------------------ |
+| user   | references | foreign_key: true, null: false |
+| item   | references | foreign_key: true, null: false |
 
 - belongs_to :user
-- has_one :item
-- has_one :share
+- belongs_to :item
+- has_one :shared
 
 ### sharedテーブル
 | Column                      | Type         | Options           |
 | --------------------------- | ------------ | ----------------- |
 | postal_code                 | string       | null: false       |
-| prefecture                  | string       | null: false       |
+| item_prefecture_id          | integer      | null: false       |
 | city                        | string       | null: false       |
 | addresses                   | string       | null: false       |
+| building                    | string       |                   |
 | phone_number                | string       | null: false       |
-| user                        | references   | foreign-key: true |
-| item_name                   | string       | null: false       |
-| item_price                  | string       | null: false       |
-| item_shipping_fee_status_id | integer      | null: false       |
+| orders                      | references   | foreign_key: true |
+
+
 
 - belongs_to :order
