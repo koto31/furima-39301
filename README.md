@@ -23,51 +23,58 @@ Things you may want to cover:
 
 * ...
 
+### usersテーブル
 | Column                | Type   | Options                   |
 | --------------------- | ------ | --------------------------|
 | nickname              | string | null: false               |
 | email                 | string | null: false, unique: true |
-| password              | string | null: false               |
-| password-confirmation | string | null: false               |
-| last-name             | string | null: false               |
-| first-name            | string | null: false               |
-| last-name-kana        | string | null: false               |
-| first-name-kana       | string | null: false               |
-| birth-date            | date   | null: false               |
+| encrypted_password    | string | null: false               |
+| last_name             | string | null: false               |
+| first_name            | string | null: false               |
+| last_name_kana        | string | null: false               |
+| first_name_kana       | string | null: false               |
+| birth_date            | date   | null: false               |
 
-- has_many :items
-- has_many :orders
+- has_many :item
+- has_many :order
 
-| Column                   | Type       | Options           |
-| ------------------------ | ---------- | ------------------|
-| item-name                | string     | null: false       |
-| item-info                | text       | null: false       |
-| item-category            | string     | null: false       |
-| item-sales-status        | string     | null: false       |
-| item-shipping-fee-status | string     | null: false       |
-| item-prefecture          | string     | null: false       |
-| item-scheduled-delivery  | string     | null: false       |
-| item-price               | string     | null: false       |
-| user_id                  | references | foreign-key: true |
+### itemsテーブル
+| Column                      | Type       | Options           |
+| --------------------------- | ---------- | ------------------|
+| item_name                   | string     | null: false       |
+| item_info                   | text       | null: false       |
+| item_category_id            | integer    | null: false       |
+| item_sales_status_id        | integer    | null: false       |
+| item_shipping_fee_status_id | integer    | null: false       |
+| item_prefecture_id          | integer    | null: false       |
+| item_scheduled_delivery_id  | integer    | null: false       |
+| item_price                  | string     | null: false       |
+| user                        | references | foreign-key: true |
 
-- belongs_to :users
-- belongs_to :orders
+- belongs_to :user
+- belongs_to :order
 
-| Column   | Type       | Options           |
-| -------- | -----------| ----------------- |
-| order_id | references | foreign-key: true |
-| item_id  | references | foreign-key: true |
+### ordersテーブル
+| Column | Type       | Options           |
+| -------| -----------| ----------------- |
+| user   | references | foreign-key: true |
+| item   | references | foreign-key: true |
 
-- belongs_to :users
-- has_one :items
-- has_one :shared
+- belongs_to :user
+- has_one :item
+- has_one :share
 
-| Column       | Type   | Options     |
-| ------------ | ------ | ----------- |
-| postal-code  | string | null: false |
-| prefecture   | string | null: false |
-| city         | string | null: false |
-| addresses    | string | null: false |
-| phone-number | string | null: false |
+### sharedテーブル
+| Column                      | Type         | Options           |
+| --------------------------- | ------------ | ----------------- |
+| postal_code                 | string       | null: false       |
+| prefecture                  | string       | null: false       |
+| city                        | string       | null: false       |
+| addresses                   | string       | null: false       |
+| phone_number                | string       | null: false       |
+| user                        | references   | foreign-key: true |
+| item_name                   | string       | null: false       |
+| item_price                  | string       | null: false       |
+| item_shipping_fee_status_id | integer      | null: false       |
 
-- belongs_to :orders
+- belongs_to :order
