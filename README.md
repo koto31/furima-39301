@@ -62,7 +62,7 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shared
+- has_one :share
 
 ### sharesテーブル
 | Column                      | Type         | Options           |
