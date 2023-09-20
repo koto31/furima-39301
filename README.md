@@ -25,7 +25,7 @@ Things you may want to cover:
 
 ### usersテーブル
 | Column                | Type   | Options                   |
-| --------------------- | ------ | --------------------------|
+| --------------------- | ------ | ------------------------- |
 | nickname              | string | null: false               |
 | email                 | string | null: false, unique: true |
 | encrypted_password    | string | null: false               |
@@ -39,20 +39,20 @@ Things you may want to cover:
 - has_many :orders
 
 ### itemsテーブル
-| Column                      | Type       | Options           |
-| --------------------------- | ---------- | ------------------|
-| item_name                   | string     | null: false       |
-| item_info                   | text       | null: false       |
-| item_category_id            | integer    | null: false       |
-| item_sales_status_id        | integer    | null: false       |
-| item_shipping_fee_status_id | integer    | null: false       |
-| item_prefecture_id          | integer    | null: false       |
-| item_scheduled_delivery_id  | integer    | null: false       |
-| item_price                  | integer    | null: false       |
-| user                        | references | foreign_key: true |
+| Column                      | Type       | Options                       |
+| --------------------------- | ---------- | ----------------------------- |
+| item_name                   | string     | null: false                   |
+| item_info                   | text       | null: false                   |
+| item_category_id            | integer    | null: false                   |
+| item_sales_status_id        | integer    | null: false                   |
+| item_shipping_fee_status_id | integer    | null: false                   |
+| item_prefecture_id          | integer    | null: false                   |
+| item_scheduled_delivery_id  | integer    | null: false                   |
+| item_price                  | integer    | null: false                   |
+| user                        | references | null:false, foreign_key: true |
 
 - belongs_to :user
-- has_many :orders
+- has_one :order
 
 ### ordersテーブル
 | Column | Type       | Options                        |
@@ -64,7 +64,7 @@ Things you may want to cover:
 - belongs_to :item
 - has_one :shared
 
-### sharedテーブル
+### sharesテーブル
 | Column                      | Type         | Options           |
 | --------------------------- | ------------ | ----------------- |
 | postal_code                 | string       | null: false       |
