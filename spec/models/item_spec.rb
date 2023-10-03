@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
+    @user = FactoryBot.create(:user)
     @item = FactoryBot.build(:item)
   end
 
@@ -55,7 +56,7 @@ RSpec.describe Item, type: :model do
      it 'item_priceが空では出品できない' do
        @item.item_price = nil
        @item.valid?
-       expect(@item.errors.full_messages).to include("Item price is not a number", "Item price is invalid") 
+       expect(@item.errors.full_messages).to include("Item price can't be blank", "Item price is not a number", "Item price is not included in the list") 
       end
       it 'priceが300円以下だと出品できない' do
         @item.item_price = 299
