@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category
+  belongs_to_active_hash :item_category
   belongs_to_active_hash :item_sales_status 
   belongs_to_active_hash  :item_shipping_fee_status
   belongs_to_active_hash  :item_prefecture
