@@ -17,6 +17,6 @@ class OrderForm
  
     def save(params,user_id)
      order = Order.create(item_id: item_id, user_id: user_id)
-     share = Share.create(postal_code: postal_code, item_prefecture_id: item_prefecture_id, city: city, addresses: addresses, building: building, phone_number: phone_number)  
+     Share.create(postal_code: postal_code, item_prefecture_id: item_prefecture_id, city: city, addresses: addresses, building: building, phone_number: phone_number, order_id: order.id)  
     end
   end

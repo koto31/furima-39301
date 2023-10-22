@@ -7,7 +7,7 @@ class CreateShares < ActiveRecord::Migration[6.0]
       t.string     :addresses,          null:false
       t.string     :building
       t.string     :phone_number,       null: false
-      t.references :orders,             foreign_key: true
+      t.references :order,             foreign_key: true
       t.timestamps
     end
   end

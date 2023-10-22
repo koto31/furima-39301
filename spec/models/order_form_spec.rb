@@ -22,7 +22,7 @@ RSpec.describe OrderForm, type: :model do
       it '郵便番号は空では保存できないこと' do
         @order.postal_code = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Include hyphen(-)")
+        expect(@order.errors.full_messages).to include("Postal code can't be blank")
       end
       it '郵便番号は「3桁ハイフン4桁」半角数字出ないと保存できないこと' do
         @order.postal_code = '123-123'

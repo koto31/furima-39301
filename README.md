@@ -73,7 +73,7 @@ Things you may want to cover:
 | addresses                   | string       | null: false       |
 | building                    | string       |                   |
 | phone_number                | string       | null: false       |
-| orders                      | references   | foreign_key: true |
+| order                      | references   | foreign_key: true |
 
 
 
