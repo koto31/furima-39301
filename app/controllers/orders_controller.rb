@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
    @order_form = OrderForm.new(order_params)
    if @order_form.valid?
       pay_item
-      binding.pry
       @order_form.save(params, current_user.id)
       redirect_to root_path
    else
